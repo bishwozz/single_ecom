@@ -1,766 +1,1040 @@
 @extends('layout.base')
 @section('content')
-    <div class="site-wrapper-reveal">
-
-        <!--============ Software Innovation Hero Start ============-->
-        <div class="software-innovation-hero-wrapper section-space--pt_80">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="software-innovation-hero-wrap wow move-up">
-                            <div class="software-innovation-hero-text">
-                                <p class="sub-heading">Find your solution</p>
-                                <h3>Best choice for your</h3>
-                                <h1 class="font-weight--reguler mb-30">Startup. </h1>
-                                <h6 class="info-heading">The full set of services around development and maintenance <br> of
-                                    complex business-critical applications.</h6>
-                                <div class="hero-button  mt-30">
-                                    <a href="#" class="ht-btn ht-btn-md">Learn more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="software-innovation-hero-image animation_images three mt-30">
-                            <img src="frontend/images/hero/soft-01.webp" class="img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
+<!-- Start Header Area -->
+<header class="header_area sticky-header">
+   <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light main_box">
+         <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <a class="navbar-brand logo_h" href="index.html"><img src="{{ asset('frontend/img/logo.png')}}" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+            </button>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+               <ul class="nav navbar-nav menu_nav ml-auto">
+                  <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                  <li class="nav-item submenu dropdown">
+                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                      aria-expanded="false">Shop</a>
+                     <ul class="dropdown-menu">
+                        <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
+                        <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
+                        <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
+                        <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
+                     </ul>
+                  </li>
+                  <li class="nav-item submenu dropdown">
+                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                      aria-expanded="false">Blog</a>
+                     <ul class="dropdown-menu">
+                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+                     </ul>
+                  </li>
+                  <li class="nav-item submenu dropdown">
+                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                      aria-expanded="false">Pages</a>
+                     <ul class="dropdown-menu">
+                        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tracking.html">Tracking</a></li>
+                        <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
+                     </ul>
+                  </li>
+                  <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                  <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+                  <li class="nav-item">
+                     <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+                  </li>
+               </ul>
             </div>
-        </div>
-        <!--============ Software Innovation Hero End ============-->
+         </div>
+      </nav>
+   </div>
+   <div class="search_input" id="search_input_box">
+      <div class="container">
+         <form class="d-flex justify-content-between">
+            <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+            <button type="submit" class="btn"></button>
+            <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+         </form>
+      </div>
+   </div>
+</header>
+<!-- End Header Area -->
 
-        <!--===========  Projects wrapper Start =============-->
-        <div class="projects-wrapper section-space--ptb_100">
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="projects-wrap">
-
-                            <div class="row">
-
-                                <div class="col-lg-4 col-md-6">
-                                    <!-- Projects Wrap Start -->
-                                    <a href="#" class="projects-wrap style-04 wow move-up">
-                                        <div class="projects-image-box">
-                                            <div class="projects-image">
-                                                <div class="image">
-                                                    <img class="img-fluid" src="frontend/images/icons/soft-s1-01-120x120.webp"
-                                                        alt="">
-                                                </div>
-                                            </div>
-                                            <div class="content text-center">
-                                                <h5 class="heading">Business & Finance</h5>
-                                                <div class="text">Lorem dolor sit amet, consectetur elit. Suspeo sitea.
-                                                    spe ndisse suscipit sagittis leo sitea rem ipsum dolor sit
-                                                </div>
-                                                <div class="box-projects-arrow">
-                                                    <span class="button-text">Discover now</span>
-                                                    <i class="fas fa-arrow-right ml-1"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Projects Wrap End -->
-                                </div>
-
-                                <div class="col-lg-4 col-md-6">
-                                    <!-- Projects Wrap Start -->
-                                    <a href="#" class="projects-wrap style-04 wow move-up">
-                                        <div class="projects-image-box">
-                                            <div class="projects-image">
-                                                <div class="image">
-                                                    <img class="img-fluid" src="frontend/images/icons/soft-s1-02-120x120.webp"
-                                                        alt="">
-                                                </div>
-                                            </div>
-                                            <div class="content text-center">
-                                                <h5 class="heading">Gaming & Enterteinment</h5>
-                                                <div class="text">Lorem dolor sit amet, consectetur elit. Suspeo sitea.
-                                                    spe ndisse suscipit sagittis leo sitea rem ipsum dolor sit
-                                                </div>
-                                                <div class="box-projects-arrow">
-                                                    <span class="button-text">Discover now</span>
-                                                    <i class="fas fa-arrow-right ml-1"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Projects Wrap End -->
-                                </div>
-
-                                <div class="col-lg-4 col-md-6">
-                                    <!-- Projects Wrap Start -->
-                                    <a href="#" class="projects-wrap style-04 wow move-up">
-                                        <div class="projects-image-box">
-                                            <div class="projects-image">
-                                                <div class="image">
-                                                    <img class="img-fluid" src="frontend/images/icons/soft-s1-03-120x120.webp"
-                                                        alt="">
-                                                </div>
-                                            </div>
-                                            <div class="content text-center">
-                                                <h5 class="heading">Information Technology</h5>
-                                                <div class="text">Lorem dolor sit amet, consectetur elit. Suspeo sitea.
-                                                    spe ndisse suscipit sagittis leo sitea rem ipsum dolor sit
-                                                </div>
-                                                <div class="box-projects-arrow">
-                                                    <span class="button-text">Discover now</span>
-                                                    <i class="fas fa-arrow-right ml-1"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Projects Wrap End -->
-                                </div>
-
-
-                            </div>
-
+<!-- start banner Area -->
+<section class="banner-area">
+   <div class="container">
+      <div class="row fullscreen align-items-center justify-content-start">
+         <div class="col-lg-12">
+            <div class="active-banner-slider owl-carousel">
+               <!-- single-slide -->
+               <div class="row single-slide align-items-center d-flex">
+                  <div class="col-lg-5 col-md-6">
+                     <div class="banner-content">
+                        <h1>Nike New <br>Collection!</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                           dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                        <div class="add-bag d-flex align-items-center">
+                           <a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
+                           <span class="add-text text-uppercase">Add to Bag</span>
                         </div>
-
-                        <div class="section-under-heading text-center section-space--mt_40">Stop wasting time and money on
-                            technology. <a href="#">Let’s get started</a></div>
-
-                    </div>
-                </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-7">
+                     <div class="banner-img">
+                        <img class="img-fluid" src="{{ asset('frontend/img/banner/banner-img.png')}}" alt="">
+                     </div>
+                  </div>
+               </div>
+               <!-- single-slide -->
+               <div class="row single-slide">
+                  <div class="col-lg-5">
+                     <div class="banner-content">
+                        <h1>Nike New <br>Collection!</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                           dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                        <div class="add-bag d-flex align-items-center">
+                           <a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
+                           <span class="add-text text-uppercase">Add to Bag</span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-7">
+                     <div class="banner-img">
+                        <img class="img-fluid" src="{{ asset('frontend/img/banner/banner-img.png')}}" alt="">
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-        <!--===========  Projects wrapper End =============-->
+         </div>
+      </div>
+   </div>
+</section>
+<!-- End banner Area -->
 
-
-
-        <!--=========== About Company Area Start ==========-->
-        <div class="software-innovation-about-company-area software-innovation-about-bg section-space--ptb_120">
-            <div class="container">
-
-                <div class="row">
-
-                    <div class="col-lg-6">
-                        <div class="image-inner-video-section">
-                            <img class="img-fluid border-radus-5" src="frontend/images/banners/soft-s2-01.webp"
-                                alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 ms-auto mt-30">
-                        <div class="machine-learning-about-content">
-                            <div class="section-title mb-20">
-                                <!-- section-title-wrap Start -->
-                                <div class="section-title-wrap text-left section-space--mb_30">
-                                    <h6 class="section-sub-title mb-20">INDUSTRIES WE SERVE</h6>
-                                    <h3 class="heading">For your very specific industry, we <span
-                                            class="text-color-primary">have highly-tailored IT solutions.</span>
-                                    </h3>
-                                </div>
-                                <!-- section-title-wrap Start -->
-
-                                <p class="dec-text mt-20">Engitech is the partner of choice for many of the world’s leading
-                                    enterprises, SMEs and technology challengers. We help businesses elevate their value
-                                    through custom software development, product design, QA and consultancy services.</p>
-                                <div class="button-box mt-5">
-                                    <div class="hero-button">
-                                        <div class="video-popup software-innovation-video-box">
-                                            <a href="https://www.youtube.com/watch?v=9No-FiEInLA"
-                                                class="single-popup-wrap video-link">
-                                                <div class="video-content">
-                                                    <div class="ht-popup-video video-button">
-                                                        <div class="video-button__two">
-                                                            <div class="video-play">
-                                                                <span class="video-play-icon"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="video-text">
-                                                        How we work
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- start features Area -->
+<section class="features-area section_gap">
+   <div class="container">
+      <div class="row features-inner">
+         <!-- single features -->
+         <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="single-features">
+               <div class="f-icon">
+                  <img src="{{ asset('frontend/img/features/f-icon1.png')}}" alt="">
+               </div>
+               <h6>Free Delivery</h6>
+               <p>Free Shipping on all order</p>
             </div>
-        </div>
-        <!--=========== About Company Area End ==========-->
-
-
-        <!--===========  feature-icon-wrapper  Start =============-->
-        <div class="feature-icon-wrapper section-space--ptb_100">
-            <div class="container">
-
-                <div class="row align-items-center">
-                    <div class="col-lg-8 col-md-8">
-                        <div class="section-title-wrap text-left section-space--mb_40">
-                            <h6 class="section-sub-title mb-20">INDUSTRIES WE SERVE </h6>
-                            <h3 class="heading">For your very specific industry, <br>
-                                we have <span class="text-color-primary"> highly-tailored IT solutions.</span></h3>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="button--box text-left text-md-end">
-                            <a href="#" class="ht-btn ht-btn-md">Talk to a consultant</a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="feature-list__two">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-12 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-images style-10">
-                                        <div class="image-box-wrap">
-                                            <div class="box-image">
-                                                <img class="img-fulid" src="frontend/images/icons/soft-s3-01.webp"
-                                                    alt="">
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Offshore Software Development</h5>
-                                                <div class="box-images-arrow">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="fas fa-arrow-right"></i>
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-12 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-images style-10">
-                                        <div class="image-box-wrap">
-                                            <div class="box-image">
-                                                <img class="img-fulid" src="frontend/images/icons/soft-s3-02.webp"
-                                                    alt="">
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Custom Software Development</h5>
-                                                <div class="box-images-arrow">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="fas fa-arrow-right"></i>
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-12 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-images style-10">
-                                        <div class="image-box-wrap">
-                                            <div class="box-image">
-                                                <img class="img-fulid" src="frontend/images/icons/soft-s3-03.webp"
-                                                    alt="">
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Software Outsourcing Services</h5>
-                                                <div class="box-images-arrow">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="fas fa-arrow-right"></i>
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-12 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-images style-10">
-                                        <div class="image-box-wrap">
-                                            <div class="box-image">
-                                                <img class="img-fulid" src="frontend/images/icons/soft-s3-04.webp"
-                                                    alt="">
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Software Product Development</h5>
-                                                <div class="box-images-arrow">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="fas fa-arrow-right"></i>
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-12 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-images style-10">
-                                        <div class="image-box-wrap">
-                                            <div class="box-image">
-                                                <img class="img-fulid" src="frontend/images/icons/soft-s3-05.webp"
-                                                    alt="">
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Web Development Services</h5>
-                                                <div class="box-images-arrow">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="fas fa-arrow-right"></i>
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-12 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-images style-10">
-                                        <div class="image-box-wrap">
-                                            <div class="box-image">
-                                                <img class="img-fulid" src="frontend/images/icons/soft-s3-06.webp"
-                                                    alt="">
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Cloud Migration Services</h5>
-                                                <div class="box-images-arrow">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="fas fa-arrow-right"></i>
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-12 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-images style-10">
-                                        <div class="image-box-wrap">
-                                            <div class="box-image">
-                                                <img class="img-fulid" src="frontend/images/icons/soft-s3-07.webp"
-                                                    alt="">
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">Mobile App Development</h5>
-                                                <div class="box-images-arrow">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="fas fa-arrow-right"></i>
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-12 wow move-up">
-                                    <!-- ht-box-icon Start -->
-                                    <div class="ht-box-images style-10">
-                                        <div class="image-box-wrap">
-                                            <div class="box-image">
-                                                <img class="img-fulid" src="frontend/images/icons/soft-s3-08.webp"
-                                                    alt="">
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="heading">UI/UX Design Teaching</h5>
-                                                <div class="box-images-arrow">
-                                                    <a href="#">
-                                                        <span class="button-text">Discover now</span>
-                                                        <i class="fas fa-arrow-right"></i>
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ht-box-icon End -->
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+         </div>
+         <!-- single features -->
+         <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="single-features">
+               <div class="f-icon">
+                  <img src="{{ asset('frontend/img/features/f-icon2.png')}}" alt="">
+               </div>
+               <h6>Return Policy</h6>
+               <p>Free Shipping on all order</p>
             </div>
-        </div>
-        <!--===========  feature-icon-wrapper  End =============-->
-
-        <!--=========== fun fact Wrapper Start ==========-->
-        <div class="fun-fact-wrapper bg-theme-default section-space--pb_30 section-space--pt_60">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 wow move-up">
-                        <div class="fun-fact--two text-center">
-                            <div class="fun-fact__count counter">120</div>
-                            <h6 class="fun-fact__text">Happy clients</h6>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 wow move-up">
-                        <div class="fun-fact--two text-center">
-                            <div class="fun-fact__count counter">32</div>
-                            <h6 class="fun-fact__text">Finished projects</h6>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 wow move-up">
-                        <div class="fun-fact--two text-center">
-                            <div class="fun-fact__count counter">73</div>
-                            <h6 class="fun-fact__text">Skilled Experts</h6>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 wow move-up">
-                        <div class="fun-fact--two text-center">
-                            <div class="fun-fact__count counter">318</div>
-                            <h6 class="fun-fact__text">Media Posts</h6>
-                        </div>
-                    </div>
-                </div>
+         </div>
+         <!-- single features -->
+         <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="single-features">
+               <div class="f-icon">
+                  <img src="{{ asset('frontend/img/features/f-icon3.png')}}" alt="">
+               </div>
+               <h6>24/7 Support</h6>
+               <p>Free Shipping on all order</p>
             </div>
-        </div>
-        <!--=========== fun fact Wrapper End ==========-->
-
-
-        <!--===========  Projects wrapper Start =============-->
-        <div class="projects-wrapper projectinfotechno-bg section-space--ptb_100">
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- section-title-wrap Start -->
-                        <div class="section-title-wrap text-center section-space--mb_40">
-                            <h6 class="section-sub-title mb-20">Case studies</h6>
-                            <h3 class="heading">Proud projects <span class="text-color-primary"> make us excel</span></h3>
-                        </div>
-                        <!-- section-title-wrap Start -->
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="projects-wrap swiper-container projects-slider__container">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <!-- Projects Wrap Start -->
-                                    <a href="#" class="projects-wrap style-01 wow move-up">
-                                        <div class="projects-image-box">
-                                            <div class="projects-image">
-                                                <img class="img-fluid"
-                                                    src="frontend/images/projects/case-study-01-480x298.webp"
-                                                    alt="">
-                                            </div>
-                                            <div class="content">
-                                                <h6 class="heading">Mitech-Smart Vision</h6>
-                                                <div class="post-categories">Cyber Security</div>
-                                                <div class="text">At Mitech, we have a holistic and integrated approach
-                                                    towards core modernization to experience technological evolution.
-                                                </div>
-                                                <div class="box-projects-arrow">
-                                                    <span class="button-text">View case study</span>
-                                                    <i class="fas fa-arrow-right ml-1"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Projects Wrap End -->
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <!-- Projects Wrap Start -->
-                                    <a href="#" class="projects-wrap style-01 wow move-up">
-                                        <div class="projects-image-box">
-                                            <div class="projects-image">
-                                                <img class="img-fluid"
-                                                    src="frontend/images/projects/case-study-02-480x298.webp"
-                                                    alt="">
-                                            </div>
-                                            <div class="content">
-                                                <h6 class="heading">Arden-Internal Networking</h6>
-                                                <div class="post-categories">Cyber Security</div>
-                                                <div class="text">The prospects for a company operating in this new
-                                                    market are varied and exciting. The potential …
-                                                </div>
-                                                <div class="box-projects-arrow">
-                                                    <span class="button-text">View case study</span>
-                                                    <i class="fas fa-arrow-right ml-1"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Projects Wrap End -->
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <!-- Projects Wrap Start -->
-                                    <a href="#" class="projects-wrap style-01 wow move-up">
-                                        <div class="projects-image-box">
-                                            <div class="projects-image">
-                                                <img class="img-fluid"
-                                                    src="frontend/images/projects/case-study-03-480x298.webp"
-                                                    alt="">
-                                            </div>
-                                            <div class="content">
-                                                <h6 class="heading">A Freeserve case study</h6>
-                                                <div class="post-categories">Cyber Security</div>
-                                                <div class="text">The prospects for a company operating in this new
-                                                    market are varied and exciting. The potential …
-                                                </div>
-                                                <div class="box-projects-arrow">
-                                                    <span class="button-text">View case study</span>
-                                                    <i class="fas fa-arrow-right ml-1"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Projects Wrap End -->
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <!-- Projects Wrap Start -->
-                                    <a href="#" class="projects-wrap style-01 wow move-up">
-                                        <div class="projects-image-box">
-                                            <div class="projects-image">
-                                                <img class="img-fluid"
-                                                    src="frontend/images/projects/case-study-04-480x298.webp"
-                                                    alt="">
-                                            </div>
-                                            <div class="content">
-                                                <h6 class="heading">Aqua – Research and Energy</h6>
-                                                <div class="post-categories">Cyber Security</div>
-                                                <div class="text">The prospects for a company operating in this new
-                                                    market are varied and exciting. The potential …
-                                                </div>
-                                                <div class="box-projects-arrow">
-                                                    <span class="button-text">View case study</span>
-                                                    <i class="fas fa-arrow-right ml-1"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Projects Wrap End -->
-                                </div>
-
-                            </div>
-                            <div class="swiper-pagination swiper-pagination-project mt_20"></div>
-                        </div>
-
-                        <div class="section-under-heading text-center section-space--mt_40">Challenges are just
-                            opportunities in disguise. <a href="#">Take the challenge!</a></div>
-
-                    </div>
-                </div>
+         </div>
+         <!-- single features -->
+         <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="single-features">
+               <div class="f-icon">
+                  <img src="{{ asset('frontend/img/features/f-icon4.png')}}" alt="">
+               </div>
+               <h6>Secure Payment</h6>
+               <p>Free Shipping on all order</p>
             </div>
-        </div>
-        <!--===========  Projects wrapper End =============-->
+         </div>
+      </div>
+   </div>
+</section>
+<!-- end features Area -->
 
-
-
-        <div class="technology-service-area technology-service-bg">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="section-title section-space--pt_60">
-                            <p class="text-white font-weight--bold">OUR TECHNOLOGY</p>
-                            <h3 class="text-white"><span class="text-color-secondary">Mitech</span> – Top Software
-                                Development Technology</h3>
-                            <p class="text-infos text-white mt-30">Our strong passion to modern tech trends and best
-                                practices drive in the development of top-notch solutions that are perfectly tailored to
-                                provide high quality and affordable software outsourcing solutions to growing startup and
-                                enterprise companies in the world.</p>
-
-                            <div class="single-button-group">
-                                <div class="button-group-wrap mt-30">
-                                    <a href="#" class="ht-btn ht-btn-md ht-btn--outline">ASP. NET Core</a>
-                                    <a href="#" class="ht-btn ht-btn-md ht-btn--outline">REACT JS</a>
-                                    <a href="#" class="ht-btn ht-btn-md ht-btn--outline">ANGULAR</a>
-                                    <a href="#" class="ht-btn ht-btn-md ht-btn--outline">PHP</a>
-                                    <a href="#" class="ht-btn ht-btn-md ht-btn--outline">JAVA</a>
-                                    <a href="#" class="ht-btn ht-btn-md ht-btn--outline">PYTHON</a>
-                                </div>
-                            </div>
-
+<!-- Start category Area -->
+<section class="category-area">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="col-lg-8 col-md-12">
+            <div class="row">
+               <div class="col-lg-8 col-md-8">
+                  <div class="single-deal">
+                     <div class="overlay"></div>
+                     <img class="img-fluid w-100" src="{{ asset('frontend/img/category/c1.jpg')}}" alt="">
+                     <a href="img/category/c1.jpg" class="img-pop-up" target="_blank">
+                        <div class="deal-details">
+                           <h6 class="deal-title">Sneaker for Sports</h6>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="banner-image section-space--pt_60">
-                            <img src="frontend/images/banners/soft-s5-img.webp" class="img-fluid" alt="Image">
+                     </a>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4">
+                  <div class="single-deal">
+                     <div class="overlay"></div>
+                     <img class="img-fluid w-100" src="{{ asset('frontend/img/category/c2.jpg')}}" alt="">
+                     <a href="img/category/c2.jpg" class="img-pop-up" target="_blank">
+                        <div class="deal-details">
+                           <h6 class="deal-title">Sneaker for Sports</h6>
                         </div>
-                    </div>
-                </div>
+                     </a>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4">
+                  <div class="single-deal">
+                     <div class="overlay"></div>
+                     <img class="img-fluid w-100" src="{{ asset('frontend/img/category/c3.jpg')}}" alt="">
+                     <a href="img/category/c3.jpg" class="img-pop-up" target="_blank">
+                        <div class="deal-details">
+                           <h6 class="deal-title">Product for Couple</h6>
+                        </div>
+                     </a>
+                  </div>
+               </div>
+               <div class="col-lg-8 col-md-8">
+                  <div class="single-deal">
+                     <div class="overlay"></div>
+                     <img class="img-fluid w-100" src="{{ asset('frontend/img/category/c4.jpg')}}" alt="">
+                     <a href="img/category/c4.jpg" class="img-pop-up" target="_blank">
+                        <div class="deal-details">
+                           <h6 class="deal-title">Sneaker for Sports</h6>
+                        </div>
+                     </a>
+                  </div>
+               </div>
             </div>
-        </div>
-
-
-        <div class="blog-section-wrapper section-space--pt_100  section-space--pb_70">
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="section-title-wrap text-center section-space--mb_40">
-                            <h6 class="section-sub-title mb-20">BLOG & NEWS</h6>
-                            <h3 class="heading">Latest news are <span class="text-color-primary"> on top all times</span>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-lg-4 col-md-6 wow move-up animated">
-                        <!--======= Single Blog Item Start ========-->
-                        <div class="single-blog-item blog-grid">
-                            <!-- Post Feature Start -->
-                            <div class="post-feature blog-thumbnail">
-                                <a href="blog-post-layout-one.html">
-                                    <img class="img-fluid" src="frontend/images/blog/blog-01-370x230.webp"
-                                        alt="Blog Images">
-                                </a>
-                            </div>
-                            <!-- Post Feature End -->
-
-                            <!-- Post info Start -->
-                            <div class="post-info lg-blog-post-info">
-                                <div class="post-meta">
-                                    <div class="post-date">
-                                        <span class="far fa-calendar meta-icon"></span>
-                                        February 28, 2019
-                                    </div>
-                                </div>
-
-                                <h5 class="post-title font-weight--bold">
-                                    <a href="#">5 Ways Technology Has Improved Business Today</a>
-                                </h5>
-
-                                <div class="post-excerpt mt-15">
-                                    <p>They play a role in making operations more seamless, bridging the gap between
-                                        authorities, consumers and businesses. …</p>
-                                </div>
-                                <div class="btn-text">
-                                    <a href="#">Read more <i class="ml-1 button-icon fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <!-- Post info End -->
-                        </div>
-                        <!--===== Single Blog Item End =========-->
-
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 wow move-up animated">
-                        <!--======= Single Blog Item Start ========-->
-                        <div class="single-blog-item blog-grid">
-                            <!-- Post Feature Start -->
-                            <div class="post-feature blog-thumbnail">
-                                <a href="blog-post-layout-one.html">
-                                    <img class="img-fluid" src="frontend/images/blog/blog-02-370x230.webp"
-                                        alt="Blog Images">
-                                </a>
-                            </div>
-                            <!-- Post Feature End -->
-
-                            <!-- Post info Start -->
-                            <div class="post-info lg-blog-post-info">
-                                <div class="post-meta">
-                                    <div class="post-date">
-                                        <span class="far fa-calendar meta-icon"></span>
-                                        February 28, 2019
-                                    </div>
-                                </div>
-
-                                <h5 class="post-title font-weight--bold">
-                                    <a href="#">5 Ways Technology Has Improved Business Today</a>
-                                </h5>
-
-                                <div class="post-excerpt mt-15">
-                                    <p>They play a role in making operations more seamless, bridging the gap between
-                                        authorities, consumers and businesses. …</p>
-                                </div>
-                                <div class="btn-text">
-                                    <a href="#">Read more <i class="ml-1 button-icon fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <!-- Post info End -->
-                        </div>
-                        <!--===== Single Blog Item End =========-->
-
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 wow move-up animated">
-                        <!--======= Single Blog Item Start ========-->
-                        <div class="single-blog-item blog-grid">
-                            <!-- Post Feature Start -->
-                            <div class="post-feature blog-thumbnail">
-                                <a href="blog-post-layout-one.html">
-                                    <img class="img-fluid" src="frontend/images/blog/blog-03-370x230.webp"
-                                        alt="Blog Images">
-                                </a>
-                            </div>
-                            <!-- Post Feature End -->
-
-                            <!-- Post info Start -->
-                            <div class="post-info lg-blog-post-info">
-                                <div class="post-meta">
-                                    <div class="post-date">
-                                        <span class="far fa-calendar meta-icon"></span>
-                                        February 28, 2019
-                                    </div>
-                                </div>
-
-                                <h5 class="post-title font-weight--bold">
-                                    <a href="#">How Wireless Technology is Changing Business</a>
-                                </h5>
-
-                                <div class="post-excerpt mt-15">
-                                    <p>It is far wiser to do your own installations and ensure that all data flowing through
-                                        the organization has end-to-end encryption. …</p>
-                                </div>
-                                <div class="btn-text">
-                                    <a href="#">Read more <i class="ml-1 button-icon fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <!-- Post info End -->
-                        </div>
-                        <!--===== Single Blog Item End =========-->
-
-                    </div>
-
-                </div>
+         </div>
+         <div class="col-lg-4 col-md-6">
+            <div class="single-deal">
+               <div class="overlay"></div>
+               <img class="img-fluid w-100" src="{{ asset('frontend/img/category/c5.jpg')}}" alt="">
+               <a href="img/category/c5.jpg" class="img-pop-up" target="_blank">
+                  <div class="deal-details">
+                     <h6 class="deal-title">Sneaker for Sports</h6>
+                  </div>
+               </a>
             </div>
-        </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- End category Area -->
 
-        <div class="cta-image-area_one section-space--ptb_80 cta-bg-image_one">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-8 col-lg-7">
-                        <div class="cta-content md-text-center">
-                            <h3 class="heading text-white">We run all kinds of IT services that vow your <span
-                                    class="text-color-secondary"> success</span></h3>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="cta-button-group--one text-center">
-                            <a href="#" class="btn btn--white btn-one"><span class="btn-icon me-2"><i
-                                        class="far fa-comment-alt"></i></span> Let's talk</a>
-                            <a href="#" class="btn btn--secondary  btn-two"><span class="btn-icon me-2"><i
-                                        class="fas fa-info-circle"></i></span> Get info</a>
-                        </div>
-                    </div>
-                </div>
+<!-- start product Area -->
+<section class="owl-carousel active-product-area section_gap">
+   <!-- single product slide -->
+   <div class="single-product-slider">
+      <div class="container">
+         <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+               <div class="section-title">
+                  <h1>Latest Products</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                     dolore
+                     magna aliqua.</p>
+               </div>
             </div>
-        </div>
+         </div>
+         <div class="row">
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p1.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
 
-    </div>
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p2.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p3.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p4.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p5.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p6.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p7.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p8.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- single product slide -->
+   <div class="single-product-slider">
+      <div class="container">
+         <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+               <div class="section-title">
+                  <h1>Coming Products</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                     dolore
+                     magna aliqua.</p>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p6.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p8.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p3.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p5.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p1.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p4.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p1.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- single product -->
+            <div class="col-lg-3 col-md-6">
+               <div class="single-product">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/p8.jpg')}}" alt="">
+                  <div class="product-details">
+                     <h6>addidas New Hammer sole
+                        for Sports person</h6>
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <div class="prd-bottom">
+
+                        <a href="" class="social-info">
+                           <span class="ti-bag"></span>
+                           <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-heart"></span>
+                           <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-sync"></span>
+                           <p class="hover-text">compare</p>
+                        </a>
+                        <a href="" class="social-info">
+                           <span class="lnr lnr-move"></span>
+                           <p class="hover-text">view more</p>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- end product Area -->
+
+<!-- Start exclusive deal Area -->
+<section class="exclusive-deal-area">
+   <div class="container-fluid">
+      <div class="row justify-content-center align-items-center">
+         <div class="col-lg-6 no-padding exclusive-left">
+            <div class="row clock_sec clockdiv" id="clockdiv">
+               <div class="col-lg-12">
+                  <h1>Exclusive Hot Deal Ends Soon!</h1>
+                  <p>Who are in extremely love with eco friendly system.</p>
+               </div>
+               <div class="col-lg-12">
+                  <div class="row clock-wrap">
+                     <div class="col clockinner1 clockinner">
+                        <h1 class="days">150</h1>
+                        <span class="smalltext">Days</span>
+                     </div>
+                     <div class="col clockinner clockinner1">
+                        <h1 class="hours">23</h1>
+                        <span class="smalltext">Hours</span>
+                     </div>
+                     <div class="col clockinner clockinner1">
+                        <h1 class="minutes">47</h1>
+                        <span class="smalltext">Mins</span>
+                     </div>
+                     <div class="col clockinner clockinner1">
+                        <h1 class="seconds">59</h1>
+                        <span class="smalltext">Secs</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <a href="" class="primary-btn">Shop Now</a>
+         </div>
+         <div class="col-lg-6 no-padding exclusive-right">
+            <div class="active-exclusive-product-slider">
+               <!-- single exclusive carousel -->
+               <div class="single-exclusive-slider">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/e-p1.png')}}" alt="">
+                  <div class="product-details">
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <h4>addidas New Hammer sole
+                        for Sports person</h4>
+                     <div class="add-bag d-flex align-items-center justify-content-center">
+                        <a class="add-btn" href=""><span class="ti-bag"></span></a>
+                        <span class="add-text text-uppercase">Add to Bag</span>
+                     </div>
+                  </div>
+               </div>
+               <!-- single exclusive carousel -->
+               <div class="single-exclusive-slider">
+                  <img class="img-fluid" src="{{ asset('frontend/img/product/e-p1.png')}}" alt="">
+                  <div class="product-details">
+                     <div class="price">
+                        <h6>$150.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                     </div>
+                     <h4>addidas New Hammer sole
+                        for Sports person</h4>
+                     <div class="add-bag d-flex align-items-center justify-content-center">
+                        <a class="add-btn" href=""><span class="ti-bag"></span></a>
+                        <span class="add-text text-uppercase">Add to Bag</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- End exclusive deal Area -->
+
+<!-- Start brand Area -->
+<section class="brand-area section_gap">
+   <div class="container">
+      <div class="row">
+         <a class="col single-img" href="#">
+            <img class="img-fluid d-block mx-auto" src="{{ asset('frontend/img/brand/1.png')}}" alt="">
+         </a>
+         <a class="col single-img" href="#">
+            <img class="img-fluid d-block mx-auto" src="{{ asset('frontend/img/brand/2.png')}}" alt="">
+         </a>
+         <a class="col single-img" href="#">
+            <img class="img-fluid d-block mx-auto" src="{{ asset('frontend/img/brand/3.png')}}" alt="">
+         </a>
+         <a class="col single-img" href="#">
+            <img class="img-fluid d-block mx-auto" src="{{ asset('frontend/img/brand/4.png')}}" alt="">
+         </a>
+         <a class="col single-img" href="#">
+            <img class="img-fluid d-block mx-auto" src="{{ asset('frontend/img/brand/5.png')}}" alt="">
+         </a>
+      </div>
+   </div>
+</section>
+<!-- End brand Area -->
+
+<!-- Start related-product Area -->
+<section class="related-product-area section_gap_bottom">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="col-lg-6 text-center">
+            <div class="section-title">
+               <h1>Deals of the Week</h1>
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.</p>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-lg-9">
+            <div class="row">
+               <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+                  <div class="single-related-product d-flex">
+                     <a href="#"><img src="{{ asset('frontend/img/r1.jpg')}}" alt=""></a>
+                     <div class="desc">
+                        <a href="#" class="title">Black lace Heels</a>
+                        <div class="price">
+                           <h6>$189.00</h6>
+                           <h6 class="l-through">$210.00</h6>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+                  <div class="single-related-product d-flex">
+                     <a href="#"><img src="{{ asset('frontend/img/r2.jpg')}}" alt=""></a>
+                     <div class="desc">
+                        <a href="#" class="title">Black lace Heels</a>
+                        <div class="price">
+                           <h6>$189.00</h6>
+                           <h6 class="l-through">$210.00</h6>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+                  <div class="single-related-product d-flex">
+                     <a href="#"><img src="{{ asset('frontend/img/r3.jpg')}}" alt=""></a>
+                     <div class="desc">
+                        <a href="#" class="title">Black lace Heels</a>
+                        <div class="price">
+                           <h6>$189.00</h6>
+                           <h6 class="l-through">$210.00</h6>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+                  <div class="single-related-product d-flex">
+                     <a href="#"><img src="{{ asset('frontend/img/r5.jpg')}}" alt=""></a>
+                     <div class="desc">
+                        <a href="#" class="title">Black lace Heels</a>
+                        <div class="price">
+                           <h6>$189.00</h6>
+                           <h6 class="l-through">$210.00</h6>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+                  <div class="single-related-product d-flex">
+                     <a href="#"><img src="{{ asset('frontend/img/r6.jpg')}}" alt=""></a>
+                     <div class="desc">
+                        <a href="#" class="title">Black lace Heels</a>
+                        <div class="price">
+                           <h6>$189.00</h6>
+                           <h6 class="l-through">$210.00</h6>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+                  <div class="single-related-product d-flex">
+                     <a href="#"><img src="{{ asset('frontend/img/r7.jpg')}}" alt=""></a>
+                     <div class="desc">
+                        <a href="#" class="title">Black lace Heels</a>
+                        <div class="price">
+                           <h6>$189.00</h6>
+                           <h6 class="l-through">$210.00</h6>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-6">
+                  <div class="single-related-product d-flex">
+                     <a href="#"><img src="{{ asset('frontend/img/r9.jpg')}}" alt=""></a>
+                     <div class="desc">
+                        <a href="#" class="title">Black lace Heels</a>
+                        <div class="price">
+                           <h6>$189.00</h6>
+                           <h6 class="l-through">$210.00</h6>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-6">
+                  <div class="single-related-product d-flex">
+                     <a href="#"><img src="{{ asset('frontend/img/r10.jpg')}}" alt=""></a>
+                     <div class="desc">
+                        <a href="#" class="title">Black lace Heels</a>
+                        <div class="price">
+                           <h6>$189.00</h6>
+                           <h6 class="l-through">$210.00</h6>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-6">
+                  <div class="single-related-product d-flex">
+                     <a href="#"><img src="{{ asset('frontend/img/r11.jpg')}}" alt=""></a>
+                     <div class="desc">
+                        <a href="#" class="title">Black lace Heels</a>
+                        <div class="price">
+                           <h6>$189.00</h6>
+                           <h6 class="l-through">$210.00</h6>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-3">
+            <div class="ctg-right">
+               <a href="#" target="_blank">
+                  <img class="img-fluid d-block mx-auto" src="{{ asset('frontend/img/category/c5.jpg')}}" alt="">
+               </a>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- End related-product Area -->
 @endsection

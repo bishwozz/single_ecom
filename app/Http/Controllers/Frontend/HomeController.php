@@ -25,15 +25,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        $header_footer_data = $this->getApplicationSettingsData();
-        // dd($header_footer_data);
-        // $menus = Menu::where('type_id','main')->where('deleted_uq_code',1)->orderBy('display_order','asc')->get();
-        $sliders = Slider::where('deleted_uq_code',1)->orderBy('display_order','asc')->get();
-        $about_us = AboutUs::where('deleted_uq_code',1)->first();
+        // $sliders = Slider::where('deleted_uq_code',1)->orderBy('display_order','asc')->get();
+        // $about_us = AboutUs::where('deleted_uq_code',1)->first();
         $this->data = [
-            // 'menus' => $menus,
-            'header_footer_data' => $header_footer_data,
-            'about_us' => $about_us,
+            // 'header_footer_data' => $header_footer_data,
+            // 'about_us' => $about_us,
         ];
         return view('frontend.index', $this->data);
     }
@@ -62,6 +58,7 @@ class HomeController extends Controller
         ];
        return view('frontend.about', $this->data);
     }
+
     public function contactUs(){
         $this->data = [
             
@@ -82,18 +79,21 @@ class HomeController extends Controller
         ];
        return view('frontend.choose_us', $this->data); 
     }
+
     public function history(){
         $this->data = [
             
         ];
        return view('frontend.history', $this->data); 
     }
+
     public function faq(){
         $this->data = [
             
         ];
        return view('frontend.faq', $this->data); 
     }
+    
     public function careers(){
         $this->data = [
             
