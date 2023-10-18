@@ -1,4 +1,5 @@
 name: Release Drafter
+uses: release-drafter/release-drafter@v5.11.0
 
 on:
   push:
@@ -35,7 +36,7 @@ categories:
       - 'dependencies'
   - title: '🧰 Removed'
     label: 'removed'
-change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+change-template: '- $TITLE (#$NUMBER - thanks to @$AUTHOR)'
 template: |
   ## Changes
 

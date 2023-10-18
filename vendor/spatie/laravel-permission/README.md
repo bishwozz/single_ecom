@@ -18,7 +18,7 @@
 
 ## Documentation, Installation, and Usage Instructions
 
-See the [DOCUMENTATION](https://docs.spatie.be/laravel-permission/v3/introduction/) for detailed installation and usage instructions.
+See the [DOCUMENTATION](https://docs.spatie.be/laravel-permission/v4/introduction/) for detailed installation and usage instructions.
 
 ## What It Does
 This package allows you to manage user permissions and roles in a database.
@@ -77,6 +77,7 @@ We publish all received postcards [on our company website](https://spatie.be/en/
 
 ## Credits
 
+- [Chris Brown](https://github.com/drbyte)
 - [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
 

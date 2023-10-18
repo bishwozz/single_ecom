@@ -37,6 +37,7 @@ trait CreateOperation
 
         $this->crud->operation('create', function () {
             $this->crud->loadDefaultOperationSettingsFromConfig();
+            $this->crud->setupDefaultSaveActions();
         });
 
         $this->crud->operation('list', function () {
@@ -47,7 +48,7 @@ trait CreateOperation
     /**
      * Show the form for creating inserting a new row.
      *
-     * @return Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {

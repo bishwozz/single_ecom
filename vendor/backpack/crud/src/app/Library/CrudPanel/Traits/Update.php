@@ -2,7 +2,7 @@
 
 namespace Backpack\CRUD\app\Library\CrudPanel\Traits;
 
-use Illuminate\Database\Eloquent\Relations\HasOneOrMany;
+use Illuminate\Support\Arr;
 
 trait Update
 {
@@ -25,11 +25,15 @@ trait Update
         $data = $this->compactFakeFields($data);
         $item = $this->model->findOrFail($id);
 
+        $data = $this->changeBelongsToNamesFromRelationshipToForeignKey($data);
+
         $this->createRelations($item, $data);
 
         // omit the n-n relationships when updating the eloquent item
-        $nn_relationships = array_pluck($this->getRelationFieldsWithPivot(), 'name');
-        $data = array_except($data, $nn_relationships);
+        $nn_relationships = Arr::pluck($this->getRelationFieldsWithPivot(), 'name');
+
+        $data = Arr::except($data, $nn_relationships);
+
         $updated = $item->update($data);
 
         return $item;
@@ -82,16 +86,20 @@ trait Update
     private function getModelAttributeValue($model, $field)
     {
         if (isset($field['entity'])) {
-            $relationArray = explode('.', $field['entity']);
-            $relatedModel = array_reduce(array_splice($relationArray, 0, -1), function ($obj, $method) {
+            $relational_entity = $this->parseRelationFieldNamesFromHtml([$field])[0]['name'];
+
+            $relation_array = explode('.', $relational_entity);
+
+            $relatedModel = $relatedModel = array_reduce(array_splice($relation_array, 0, -1), function ($obj, $method) {
                 return $obj->{$method} ? $obj->{$method} : $obj;
             }, $model);
 
-            $relationMethod = end($relationArray);
-            if ($relatedModel->{$relationMethod} && $relatedModel->{$relationMethod}() instanceof HasOneOrMany) {
-                return $relatedModel->{$relationMethod}->{$field['name']};
+            $relationMethod = Arr::last($relation_array);
+
+            if (method_exists($relatedModel, $relationMethod) && $relatedModel->{$relationMethod}() instanceof HasOne) {
+                return $relatedModel->{$relationMethod}->{Arr::last(explode('.', $relational_entity))};
             } else {
-                return $relatedModel->{$field['name']};
+                return $relatedModel->{$relationMethod};
             }
         }
 

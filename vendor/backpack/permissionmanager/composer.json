@@ -8,8 +8,6 @@
         "backpack roles",
         "backpack user management",
         "updivision",
-        "dick",
-        "dick permission",
         "backpack",
         "manage permission",
         "manage roles",
@@ -27,16 +25,16 @@
         },
         {
             "name": "Cristian Tabacitu",
-            "email": "hello@tabacitu.ro",
-            "homepage": "http://www.tabacitu.ro",
+            "email": "tabacitu@backpackforlaravel.com",
+            "homepage": "https://backpackforlaravel.com",
             "role": "Chief Architect"
         }
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "spatie/laravel-permission": "^3.0",
-        "backpack/crud": "^4.0.0"
+        "spatie/laravel-permission": "^4.0|^3.0",
+        "backpack/crud": "^4.1.0"
     },
     "require-dev": {
         "phpunit/phpunit" : "^9.0||^7.0",

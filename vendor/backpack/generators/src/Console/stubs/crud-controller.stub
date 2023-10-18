@@ -19,27 +19,60 @@ class DummyClassCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
+    /**
+     * Configure the CrudPanel object. Apply settings to all operations.
+     * 
+     * @return void
+     */
     public function setup()
     {
-        $this->crud->setModel('App\Models\DummyClass');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/dummy_class');
-        $this->crud->setEntityNameStrings('dummy_class', 'DummyTable');
+        CRUD::setModel(\App\Models\DummyClass::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/dummy-class');
+        CRUD::setEntityNameStrings('dummy singular', 'dummy plural');
     }
 
+    /**
+     * Define what happens when the List operation is loaded.
+     * 
+     * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
+     * @return void
+     */
     protected function setupListOperation()
     {
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+        CRUD::setFromDb(); // columns
+
+        /**
+         * Columns can be defined using the fluent syntax or array syntax:
+         * - CRUD::column('price')->type('number');
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
+         */
     }
 
+    /**
+     * Define what happens when the Create operation is loaded.
+     * 
+     * @see https://backpackforlaravel.com/docs/crud-operation-create
+     * @return void
+     */
     protected function setupCreateOperation()
     {
-        $this->crud->setValidation(DummyClassRequest::class);
+        CRUD::setValidation(DummyClassRequest::class);
 
-        // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+        CRUD::setFromDb(); // fields
+
+        /**
+         * Fields can be defined using the fluent syntax or array syntax:
+         * - CRUD::field('price')->type('number');
+         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
+         */
     }
 
+    /**
+     * Define what happens when the Update operation is loaded.
+     * 
+     * @see https://backpackforlaravel.com/docs/crud-operation-update
+     * @return void
+     */
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();

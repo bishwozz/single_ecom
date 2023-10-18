@@ -10,34 +10,31 @@ trait AutoSet
      *
      * @return void
      */
-    public function setFromDb()
+    public function setFromDb($setFields = true, $setColumns = true)
     {
-        if (! $this->driverIsMongoDb()) {
-            $this->setDoctrineTypesMapping();
+        if ($this->driverIsSql()) {
             $this->getDbColumnTypes();
         }
 
-        array_map(function ($field) {
-            $new_field = [
-                'name'       => $field,
-                'label'      => $this->makeLabel($field),
-                'value'      => null,
-                'default'    => isset($this->autoset['db_column_types'][$field]['default']) ? $this->autoset['db_column_types'][$field]['default'] : null,
-                'type'       => $this->getFieldTypeFromDbColumnType($field),
-                'values'     => [],
-                'attributes' => [],
-                'autoset'    => true,
-            ];
-
-            if (! isset($this->fields()[$field])) {
-                $this->addField($new_field);
+        array_map(function ($field) use ($setFields, $setColumns) {
+            if ($setFields && ! isset($this->fields()[$field])) {
+                $this->addField([
+                    'name'       => $field,
+                    'label'      => $this->makeLabel($field),
+                    'value'      => null,
+                    'default'    => isset($this->autoset['db_column_types'][$field]['default']) ? $this->autoset['db_column_types'][$field]['default'] : null,
+                    'type'       => $this->inferFieldTypeFromDbColumnType($field),
+                    'values'     => [],
+                    'attributes' => [],
+                    'autoset'    => true,
+                ]);
             }
 
-            if (! in_array($field, $this->model->getHidden()) && ! in_array($field, $this->columns())) {
+            if ($setColumns && ! in_array($field, $this->model->getHidden()) && ! isset($this->columns()[$field])) {
                 $this->addColumn([
                     'name'    => $field,
                     'label'   => $this->makeLabel($field),
-                    'type'    => $this->getFieldTypeFromDbColumnType($field),
+                    'type'    => $this->inferFieldTypeFromDbColumnType($field),
                     'autoset' => true,
                 ]);
             }
@@ -53,6 +50,8 @@ trait AutoSet
      */
     public function getDbColumnTypes()
     {
+        $this->setDoctrineTypesMapping();
+
         $dbColumnTypes = [];
 
         foreach ($this->getDbTableColumns() as $key => $column) {
@@ -87,78 +86,74 @@ trait AutoSet
     }
 
     /**
-     * Intuit a field type, judging from the database column type.
+     * Infer a field type, judging from the database column type.
      *
      * @param  string  $field  Field name.
      * @return string Field type.
      */
-    public function getFieldTypeFromDbColumnType($field)
+    protected function inferFieldTypeFromDbColumnType($fieldName)
     {
-        $dbColumnTypes = $this->getDbColumnTypes();
-
-        if ($field == 'password') {
+        if ($fieldName == 'password') {
             return 'password';
         }
 
-        if ($field == 'email') {
+        if ($fieldName == 'email') {
             return 'email';
         }
 
-        if (isset($dbColumnTypes[$field])) {
-            switch ($dbColumnTypes[$field]['type']) {
-                case 'int':
-                case 'integer':
-                case 'smallint':
-                case 'mediumint':
-                case 'longint':
-                    return 'number';
-                    break;
+        if (is_array($fieldName)) {
+            return 'text'; // not because it's right, but because we don't know what it is
+        }
 
-                case 'string':
-                case 'varchar':
-                case 'set':
-                    return 'text';
-                    break;
+        $dbColumnTypes = $this->getDbColumnTypes();
 
-                // case 'enum':
-                //     return 'enum';
-                // break;
+        if (! isset($dbColumnTypes[$fieldName])) {
+            return 'text';
+        }
 
-                case 'boolean':
-                       return 'boolean';
-                       break;
+        switch ($dbColumnTypes[$fieldName]['type']) {
+            case 'int':
+            case 'integer':
+            case 'smallint':
+            case 'mediumint':
+            case 'longint':
+                return 'number';
 
-                case 'tinyint':
-                    return 'active';
-                    break;
+            case 'string':
+            case 'varchar':
+            case 'set':
+                return 'text';
 
-                case 'text':
-                case 'mediumtext':
-                case 'longtext':
-                    return 'textarea';
-                    break;
+            // case 'enum':
+            //     return 'enum';
+            // break;
 
-                case 'date':
-                    return 'date';
-                    break;
+            case 'boolean':
+                return 'boolean';
 
-                case 'datetime':
-                case 'timestamp':
-                    return 'datetime';
-                    break;
+            case 'tinyint':
+                return 'active';
 
-                case 'time':
-                    return 'time';
-                    break;
+            case 'text':
+            case 'mediumtext':
+            case 'longtext':
+                return 'textarea';
 
-                case 'json':
-                    return 'table';
-                    break;
+            case 'date':
+                return 'date';
 
-                default:
-                    return 'text';
-                    break;
-            }
+            case 'datetime':
+            case 'timestamp':
+                return 'datetime';
+
+            case 'time':
+                return 'time';
+
+            case 'json':
+                return 'table';
+
+            default:
+                return 'text';
         }
 
         return 'text';
@@ -168,7 +163,7 @@ trait AutoSet
     public function setDoctrineTypesMapping()
     {
         $types = ['enum' => 'string'];
-        $platform = $this->getSchema()->getConnection()->getDoctrineConnection()->getDatabasePlatform();
+        $platform = $this->getSchema()->getConnection()->getDoctrineSchemaManager()->getDatabasePlatform();
         foreach ($types as $type_key => $type_value) {
             if (! $platform->hasDoctrineTypeMappingFor($type_key)) {
                 $platform->registerDoctrineTypeMapping($type_key, $type_value);
@@ -221,7 +216,7 @@ trait AutoSet
     {
         $fillable = $this->model->getFillable();
 
-        if ($this->driverIsMongoDb()) {
+        if (! $this->driverIsSql()) {
             $columns = $fillable;
         } else {
             // Automatically-set columns should be both in the database, and in the $fillable variable on the Eloquent Model

@@ -14,11 +14,16 @@ class UserCrudController extends CrudController
 
     protected function edit($id)
     {
-        return Response('edit');
+        return response('edit');
     }
 
     protected function update($id)
     {
-        return Response('update');
+        return response('update');
+    }
+
+    protected function index()
+    {
+        return response('index');
     }
 }

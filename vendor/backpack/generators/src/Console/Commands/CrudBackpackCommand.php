@@ -2,7 +2,6 @@
 
 namespace Backpack\Generators\Console\Commands;
 
-use Artisan;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
@@ -29,31 +28,34 @@ class CrudBackpackCommand extends Command
      */
     public function handle()
     {
-        $name = ucfirst($this->argument('name'));
-        $lowerName = strtolower($this->argument('name'));
-
-        // Create the CRUD Controller and show output
-        Artisan::call('backpack:crud-controller', ['name' => $name]);
-        echo Artisan::output();
+        $name = (string) $this->argument('name');
+        $nameTitle = ucfirst(Str::camel($name));
+        $nameKebab = Str::kebab($nameTitle);
+        $namePlural = ucfirst(str_replace('-', ' ', Str::plural($nameKebab)));
 
         // Create the CRUD Model and show output
-        Artisan::call('backpack:crud-model', ['name' => $name]);
-        echo Artisan::output();
+        $this->call('backpack:crud-model', ['name' => $nameTitle]);
+
+        // Create the CRUD Controller and show output
+        $this->call('backpack:crud-controller', ['name' => $nameTitle]);
 
         // Create the CRUD Request and show output
-        Artisan::call('backpack:crud-request', ['name' => $name]);
-        echo Artisan::output();
+        $this->call('backpack:crud-request', ['name' => $nameTitle]);
 
         // Create the CRUD route
-        Artisan::call('backpack:add-custom-route', [
-            'code' => "Route::crud('".$lowerName."', '".$name."CrudController');",
+        $this->call('backpack:add-custom-route', [
+            'code' => "Route::crud('$nameKebab', '{$nameTitle}CrudController');",
         ]);
-        echo Artisan::output();
 
         // Create the sidebar item
-        Artisan::call('backpack:add-sidebar-content', [
-            'code' => "<li class='nav-item'><a class='nav-link' href='{{ backpack_url('".$lowerName."') }}'><i class='nav-icon fa fa-question'></i> ".Str::plural($name).'</a></li>',
+        $this->call('backpack:add-sidebar-content', [
+            'code' => "<li class='nav-item'><a class='nav-link' href='{{ backpack_url('$nameKebab') }}'><i class='nav-icon la la-question'></i> $namePlural</a></li>",
         ]);
-        echo Artisan::output();
+
+        // if the application uses cached routes, we should rebuild the cache so the previous added route will
+        // be acessible without manually clearing the route cache.
+        if (app()->routesAreCached()) {
+            $this->call('route:cache');
+        }
     }
 }

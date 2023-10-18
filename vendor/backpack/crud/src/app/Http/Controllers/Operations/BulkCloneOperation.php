@@ -49,7 +49,7 @@ trait BulkCloneOperation
     {
         $this->crud->hasAccessOrFail('bulkClone');
 
-        $entries = $this->request->input('entries');
+        $entries = request()->input('entries', []);
         $clonedEntries = [];
 
         foreach ($entries as $key => $id) {

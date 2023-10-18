@@ -2,6 +2,7 @@
 
 namespace Backpack\CRUD\app\Models\Traits\SpatieTranslatable;
 
+use Illuminate\Support\Arr;
 use Spatie\Translatable\HasTranslations as OriginalHasTranslations;
 
 trait HasTranslations
@@ -71,7 +72,7 @@ trait HasTranslations
     public static function create(array $attributes = [])
     {
         $locale = $attributes['locale'] ?? \App::getLocale();
-        $attributes = array_except($attributes, ['locale']);
+        $attributes = Arr::except($attributes, ['locale']);
         $non_translatable = [];
 
         $model = new static();
@@ -103,7 +104,7 @@ trait HasTranslations
         }
 
         $locale = $attributes['locale'] ?? \App::getLocale();
-        $attributes = array_except($attributes, ['locale']);
+        $attributes = Arr::except($attributes, ['locale']);
         $non_translatable = [];
 
         // do the actual saving

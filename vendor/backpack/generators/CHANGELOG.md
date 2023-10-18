@@ -3,6 +3,12 @@
 All Notable changes to `Backpack Generators` will be documented in this file
 
 ------------
+IMPORTANT
+------------
+
+Starting with version 3, the changelog is kept inside the Releases tab in our this repo's Github page. Please check https://github.com/Laravel-Backpack/Generators/releases
+
+------------
 
 ## 2.0.7 - 2020-03-05
 

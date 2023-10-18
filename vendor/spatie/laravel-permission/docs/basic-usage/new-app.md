@@ -35,8 +35,8 @@ git commit -m "Add Spatie Laravel Permissions package"
 php artisan migrate:fresh
 
 # Add `HasRoles` trait to User model
-sed -i '' $'s/use Notifiable;/use Notifiable;\\\n    use \\\\Spatie\\\\Permission\\\\Traits\\\\HasRoles;/' app/User.php
 sed -i '' $'s/use HasFactory, Notifiable;/use HasFactory, Notifiable;\\\n    use \\\\Spatie\\\\Permission\\\\Traits\\\\HasRoles;/' app/Models/User.php
+sed -i '' $'s/use HasApiTokens, HasFactory, Notifiable;/use HasApiTokens, HasFactory, Notifiable;\\\n    use \\\\Spatie\\\\Permission\\\\Traits\\\\HasRoles;/' app/Models/User.php
 git add . && git commit -m "Add HasRoles trait"
 
 # Add Laravel's basic auth scaffolding
@@ -86,7 +86,7 @@ class PermissionsDemoSeeder extends Seeder
         $role2->givePermissionTo('publish articles');
         $role2->givePermissionTo('unpublish articles');
 
-        $role3 = Role::create(['name' => 'super-admin']);
+        $role3 = Role::create(['name' => 'Super-Admin']);
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
         // create demo users
@@ -119,8 +119,9 @@ php artisan migrate:fresh --seed --seeder=PermissionsDemoSeeder
 ```
 
 ### Grant Super-Admin access
-Super-Admins are a common feature. Using the following approach allows that when your Super-Admin user is logged in, all permission-checks in your app which call `can()` or `@can()` will return true.
+Super-Admins are a common feature. The following approach allows that when your Super-Admin user is logged in, all permission-checks in your app which call `can()` or `@can()` will return true.
 
+- Create a role named `Super-Admin`. (Or whatever name you wish; but use it consistently just like you must with any role name.)
 - Add a Gate::before check in your `AuthServiceProvider`:
 
 ```diff
@@ -130,7 +131,7 @@ Super-Admins are a common feature. Using the following approach allows that when
         
         //
 
-+        // Implicitly grant "Super Admin" role all permission checks using can()
++        // Implicitly grant "Super-Admin" role all permission checks using can()
 +        Gate::before(function ($user, $ability) {
 +            if ($user->hasRole('Super-Admin')) {
 +                return true;
@@ -155,7 +156,7 @@ To share your app on Github for easy collaboration:
 
 ```sh
 git remote add origin git@github.com:YOURUSERNAME/REPONAME.git
-git push -u origin master
+git push -u origin main
 ```
 The above only needs to be done once. 
 
@@ -164,7 +165,7 @@ The above only needs to be done once.
 ```sh
 git add .
 git commit -m "Explain what your commit is about here"
-git push origin master
+git push origin main
 ```
 Repeat the above process whenever you change code that you want to share.
 

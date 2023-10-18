@@ -5,7 +5,6 @@ namespace Backpack\CRUD\app\Library\CrudPanel\Traits;
 trait Query
 {
     public $query;
-    public $request;
 
     // ----------------
     // ADVANCED QUERIES
@@ -51,7 +50,7 @@ trait Query
      */
     public function orderBy($field, $order = 'asc')
     {
-        if ($this->request->has('order')) {
+        if ($this->getRequest()->has('order')) {
             return $this->query;
         }
 
@@ -70,8 +69,6 @@ trait Query
         if (! isset($column['orderLogic'])) {
             return $this->query;
         }
-
-        $this->query->getQuery()->orders = null;
 
         $orderLogic = $column['orderLogic'];
 
@@ -134,5 +131,21 @@ trait Query
     public function count()
     {
         return $this->query->count();
+    }
+
+    /**
+     * Apply table prefix in the order clause if the query contains JOINS clauses.
+     *
+     * @param  string  $column_name
+     * @param  string  $column_direction
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function orderByWithPrefix($column_name, $column_direction = 'ASC')
+    {
+        if ($this->query->getQuery()->joins !== null) {
+            return $this->query->orderByRaw($this->model->getTableWithPrefix().'.'.$column_name.' '.$column_direction);
+        }
+
+        return $this->query->orderBy($column_name, $column_direction);
     }
 }

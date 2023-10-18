@@ -65,7 +65,7 @@ trait Search
                 case 'email':
                 case 'text':
                 case 'textarea':
-                    $query->orWhere($column['name'], 'like', '%'.$searchTerm.'%');
+                    $query->orWhere($this->getColumnWithTableNamePrefixed($query, $column['name']), 'like', '%'.$searchTerm.'%');
                     break;
 
                 case 'date':
@@ -76,13 +76,13 @@ trait Search
                         break;
                     }
 
-                    $query->orWhereDate($column['name'], Carbon::parse($searchTerm));
+                    $query->orWhereDate($this->getColumnWithTableNamePrefixed($query, $column['name']), Carbon::parse($searchTerm));
                     break;
 
                 case 'select':
                 case 'select_multiple':
                     $query->orWhereHas($column['entity'], function ($q) use ($column, $searchTerm) {
-                        $q->where($column['attribute'], 'like', '%'.$searchTerm.'%');
+                        $q->where($this->getColumnWithTableNamePrefixed($q, $column['attribute']), 'like', '%'.$searchTerm.'%');
                     });
                     break;
 
@@ -221,7 +221,7 @@ trait Search
 
         // add the details_row button to the first column
         if ($this->getOperationSetting('detailsRow')) {
-            $details_row_button = \View::make('crud::columns.details_row_button')
+            $details_row_button = \View::make('crud::columns.inc.details_row_button')
                                            ->with('crud', $this)
                                            ->with('entry', $entry)
                                            ->with('row_number', $rowNumber)
@@ -313,10 +313,22 @@ trait Search
         }
 
         return [
-            'draw'            => (isset($this->request['draw']) ? (int) $this->request['draw'] : 0),
+            'draw'            => (isset($this->getRequest()['draw']) ? (int) $this->getRequest()['draw'] : 0),
             'recordsTotal'    => $totalRows,
             'recordsFiltered' => $filteredRows,
             'data'            => $rows,
         ];
+    }
+
+    /**
+     * Return the column attribute (column in database) prefixed with table to use in search.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $column
+     * @return string
+     */
+    public function getColumnWithTableNamePrefixed($query, $column)
+    {
+        return $query->getModel()->getTable().'.'.$column;
     }
 }

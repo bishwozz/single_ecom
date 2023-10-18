@@ -20,30 +20,4 @@ trait SluggableScopeHelpers
     {
         return $scope->where($this->getSlugKeyName().'->'.$this->getLocale(), $slug);
     }
-
-    /**
-     * Find a model by its primary slug.
-     *
-     * @param  string  $slug
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|null
-     */
-    public static function findBySlug(string $slug, array $columns = ['*'])
-    {
-        return static::whereSlug($slug)->first($columns);
-    }
-
-    /**
-     * Find a model by its primary slug or throw an exception.
-     *
-     * @param  string  $slug
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection
-     *
-     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
-     */
-    public static function findBySlugOrFail(string $slug, array $columns = ['*'])
-    {
-        return static::whereSlug($slug)->firstOrFail($columns);
-    }
 }

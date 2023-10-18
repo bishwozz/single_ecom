@@ -3,6 +3,7 @@
 namespace Backpack\Generators\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Str;
 
 class CrudOperationBackpackCommand extends GeneratorCommand
 {
@@ -37,8 +38,7 @@ class CrudOperationBackpackCommand extends GeneratorCommand
     /**
      * Get the destination class path.
      *
-     * @param string $name
-     *
+     * @param  string  $name
      * @return string
      */
     protected function getPath($name)
@@ -61,8 +61,7 @@ class CrudOperationBackpackCommand extends GeneratorCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param string $rootNamespace
-     *
+     * @param  string  $rootNamespace
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
@@ -73,14 +72,13 @@ class CrudOperationBackpackCommand extends GeneratorCommand
     /**
      * Replace the table name for the given stub.
      *
-     * @param string $stub
-     * @param string $name
-     *
+     * @param  string  $stub
+     * @param  string  $name
      * @return string
      */
     protected function replaceNameStrings(&$stub, $name)
     {
-        $table = str_plural(ltrim(strtolower(preg_replace('/[A-Z]/', '_$0', str_replace($this->getNamespace($name).'\\', '', $name))), '_'));
+        $table = Str::plural(ltrim(strtolower(preg_replace('/[A-Z]/', '_$0', str_replace($this->getNamespace($name).'\\', '', $name))), '_'));
 
         $stub = str_replace('DummyTable', $table, $stub);
         $stub = str_replace('dummy_class', strtolower(str_replace($this->getNamespace($name).'\\', '', $name)), $stub);
@@ -91,8 +89,7 @@ class CrudOperationBackpackCommand extends GeneratorCommand
     /**
      * Build the class with the given name.
      *
-     * @param string $name
-     *
+     * @param  string  $name
      * @return string
      */
     protected function buildClass($name)

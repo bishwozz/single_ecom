@@ -11,13 +11,13 @@ class PostgresGrammar extends Grammar
     /**
      * All of the available clause operators.
      *
-     * @var array
+     * @var string[]
      */
     protected $operators = [
         '=', '<', '>', '<=', '>=', '<>', '!=',
         'like', 'not like', 'between', 'ilike', 'not ilike',
         '~', '&', '|', '#', '<<', '>>', '<<=', '>>=',
-        '&&', '@>', '<@', '?', '?|', '?&', '||', '-', '-', '#-',
+        '&&', '@>', '<@', '?', '?|', '?&', '||', '-', '@?', '@@', '#-',
         'is distinct from', 'is not distinct from',
     ];
 
@@ -219,6 +219,30 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+     * Compile an "upsert" statement into SQL.
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  array  $values
+     * @param  array  $uniqueBy
+     * @param  array  $update
+     * @return string
+     */
+    public function compileUpsert(Builder $query, array $values, array $uniqueBy, array $update)
+    {
+        $sql = $this->compileInsert($query, $values);
+
+        $sql .= ' on conflict ('.$this->columnize($uniqueBy).') do update set ';
+
+        $columns = collect($update)->map(function ($value, $key) {
+            return is_numeric($key)
+                ? $this->wrap($value).' = '.$this->wrapValue('excluded').'.'.$this->wrap($value)
+                : $this->wrap($key).' = '.$this->parameter($value);
+        })->implode(', ');
+
+        return $sql.$columns;
+    }
+
+    /**
      * Prepares a JSON column being updated using the JSONB_SET function.
      *
      * @param  string  $key
@@ -234,6 +258,114 @@ class PostgresGrammar extends Grammar
         $path = '\'{"'.implode('","', $segments).'"}\'';
 
         return "{$field} = jsonb_set({$field}::jsonb, {$path}, {$this->parameter($value)})";
+    }
+
+    /**
+     * Compile an update from statement into SQL.
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  array  $values
+     * @return string
+     */
+    public function compileUpdateFrom(Builder $query, $values)
+    {
+        $table = $this->wrapTable($query->from);
+
+        // Each one of the columns in the update statements needs to be wrapped in the
+        // keyword identifiers, also a place-holder needs to be created for each of
+        // the values in the list of bindings so we can make the sets statements.
+        $columns = $this->compileUpdateColumns($query, $values);
+
+        $from = '';
+
+        if (isset($query->joins)) {
+            // When using Postgres, updates with joins list the joined tables in the from
+            // clause, which is different than other systems like MySQL. Here, we will
+            // compile out the tables that are joined and add them to a from clause.
+            $froms = collect($query->joins)->map(function ($join) {
+                return $this->wrapTable($join->table);
+            })->all();
+
+            if (count($froms) > 0) {
+                $from = ' from '.implode(', ', $froms);
+            }
+        }
+
+        $where = $this->compileUpdateWheres($query);
+
+        return trim("update {$table} set {$columns}{$from} {$where}");
+    }
+
+    /**
+     * Compile the additional where clauses for updates with joins.
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @return string
+     */
+    protected function compileUpdateWheres(Builder $query)
+    {
+        $baseWheres = $this->compileWheres($query);
+
+        if (! isset($query->joins)) {
+            return $baseWheres;
+        }
+
+        // Once we compile the join constraints, we will either use them as the where
+        // clause or append them to the existing base where clauses. If we need to
+        // strip the leading boolean we will do so when using as the only where.
+        $joinWheres = $this->compileUpdateJoinWheres($query);
+
+        if (trim($baseWheres) == '') {
+            return 'where '.$this->removeLeadingBoolean($joinWheres);
+        }
+
+        return $baseWheres.' '.$joinWheres;
+    }
+
+    /**
+     * Compile the "join" clause where clauses for an update.
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @return string
+     */
+    protected function compileUpdateJoinWheres(Builder $query)
+    {
+        $joinWheres = [];
+
+        // Here we will just loop through all of the join constraints and compile them
+        // all out then implode them. This should give us "where" like syntax after
+        // everything has been built and then we will join it to the real wheres.
+        foreach ($query->joins as $join) {
+            foreach ($join->wheres as $where) {
+                $method = "where{$where['type']}";
+
+                $joinWheres[] = $where['boolean'].' '.$this->$method($query, $where);
+            }
+        }
+
+        return implode(' ', $joinWheres);
+    }
+
+    /**
+     * Prepare the bindings for an update statement.
+     *
+     * @param  array  $bindings
+     * @param  array  $values
+     * @return array
+     */
+    public function prepareBindingsForUpdateFrom(array $bindings, array $values)
+    {
+        $values = collect($values)->map(function ($value, $column) {
+            return is_array($value) || ($this->isJsonSelector($column) && ! $this->isExpression($value))
+                ? json_encode($value)
+                : $value;
+        })->all();
+
+        $bindingsWithoutWhere = Arr::except($bindings, ['select', 'where']);
+
+        return array_values(
+            array_merge($values, $bindings['where'], Arr::flatten($bindingsWithoutWhere))
+        );
     }
 
     /**
@@ -345,7 +477,7 @@ class PostgresGrammar extends Grammar
     }
 
     /**
-     *Wrap the given JSON selector for boolean values.
+     * Wrap the given JSON selector for boolean values.
      *
      * @param  string  $value
      * @return string

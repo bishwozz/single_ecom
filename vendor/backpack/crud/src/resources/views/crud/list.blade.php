@@ -21,25 +21,24 @@
 @endsection
 
 @section('content')
-<!-- Default box -->
+  <!-- Default box -->
   <div class="row">
 
     <!-- THE ACTUAL CONTENT -->
     <div class="{{ $crud->getListContentClass() }}">
-      <div class="">
 
         <div class="row mb-0">
-          <div class="col-6">
+          <div class="col-sm-6">
             @if ( $crud->buttons()->where('stack', 'top')->count() ||  $crud->exportButtons())
-            <div class="hidden-print {{ $crud->hasAccess('create')?'with-border':'' }}">
+              <div class="d-print-none {{ $crud->hasAccess('create')?'with-border':'' }}">
 
-              @include('crud::inc.button_stack', ['stack' => 'top'])
+                @include('crud::inc.button_stack', ['stack' => 'top'])
 
-            </div>
+              </div>
             @endif
           </div>
-          <div class="col-6">
-              <div id="datatable_search_stack" class="float-right"></div>
+          <div class="col-sm-6">
+            <div id="datatable_search_stack" class="mt-sm-0 mt-2 d-print-none"></div>
           </div>
         </div>
 
@@ -48,9 +47,7 @@
           @include('crud::inc.filters_navbar')
         @endif
 
-        <div class="overflow-hidden mt-2">
-
-        <table id="crudTable" class="bg-white table table-striped table-hover nowrap rounded shadow-xs border-xs" cellspacing="0">
+        <table id="crudTable" class="bg-white table table-striped table-hover nowrap rounded shadow-xs border-xs mt-2" cellspacing="0">
             <thead>
               <tr>
                 {{-- Table columns --}}
@@ -71,39 +68,40 @@
 
                     {{-- If it is an export field only, we are done. --}}
                     @if(isset($column['exportOnlyField']) && $column['exportOnlyField'] === true)
-                        data-visible="false"
-                        data-visible-in-table="false"
-                        data-can-be-visible-in-table="false"
-                        data-visible-in-modal="false"
-                        data-visible-in-export="true"
-                        data-force-export="true"
-
+                      data-visible="false"
+                      data-visible-in-table="false"
+                      data-can-be-visible-in-table="false"
+                      data-visible-in-modal="false"
+                      data-visible-in-export="true"
+                      data-force-export="true"
                     @else
-
-                        data-visible-in-table="{{var_export($column['visibleInTable'] ?? false)}}"
-                        data-visible="{{var_export($column['visibleInTable'] ?? true)}}"
-                        data-can-be-visible-in-table="true"
-                        data-visible-in-modal="{{var_export($column['visibleInModal'] ?? true)}}"
-                        @if(isset($column['visibleInExport']))
-                            @if($column['visibleInExport'] === false)
-                            data-visible-in-export="false"
-                            data-force-export="false"
-                            @else
-                            data-visible-in-export="true"
-                            data-force-export="true"
-                            @endif
-                        @else
-                            data-visible-in-export="true"
-                            data-force-export="false"
-                        @endif
+                      data-visible-in-table="{{var_export($column['visibleInTable'] ?? false)}}"
+                      data-visible="{{var_export($column['visibleInTable'] ?? true)}}"
+                      data-can-be-visible-in-table="true"
+                      data-visible-in-modal="{{var_export($column['visibleInModal'] ?? true)}}"
+                      @if(isset($column['visibleInExport']))
+                         @if($column['visibleInExport'] === false)
+                           data-visible-in-export="false"
+                           data-force-export="false"
+                         @else
+                           data-visible-in-export="true"
+                           data-force-export="true"
+                         @endif
+                       @else
+                         data-visible-in-export="true"
+                         data-force-export="false"
+                       @endif
                     @endif
-                    >
+                  >
                     {!! $column['label'] !!}
                   </th>
                 @endforeach
 
                 @if ( $crud->buttons()->where('stack', 'line')->count() )
-                  <th data-orderable="false" data-priority="{{ $crud->getActionsColumnPriority() }}" data-visible-in-export="false">{{ trans('backpack::crud.actions') }}</th>
+                  <th data-orderable="false"
+                      data-priority="{{ $crud->getActionsColumnPriority() }}"
+                      data-visible-in-export="false"
+                      >{{ trans('backpack::crud.actions') }}</th>
                 @endif
               </tr>
             </thead>
@@ -124,16 +122,13 @@
           </table>
 
           @if ( $crud->buttons()->where('stack', 'bottom')->count() )
-          <div id="bottom_buttons" class="hidden-print">
+          <div id="bottom_buttons" class="d-print-none text-center text-sm-left">
             @include('crud::inc.button_stack', ['stack' => 'bottom'])
 
             <div id="datatable_button_stack" class="float-right text-right hidden-xs"></div>
           </div>
           @endif
 
-        </div><!-- /.box-body -->
-
-      </div><!-- /.box -->
     </div>
 
   </div>
@@ -146,20 +141,19 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('packages/datatables.net-fixedheader-bs4/css/fixedHeader.bootstrap4.min.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('packages/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
 
-  <link rel="stylesheet" href="{{ asset('packages/backpack/crud/css/crud.css') }}">
-  <link rel="stylesheet" href="{{ asset('packages/backpack/crud/css/form.css') }}">
-  <link rel="stylesheet" href="{{ asset('packages/backpack/crud/css/list.css') }}">
+  <link rel="stylesheet" href="{{ asset('packages/backpack/crud/css/crud.css').'?v='.config('backpack.base.cachebusting_string') }}">
+  <link rel="stylesheet" href="{{ asset('packages/backpack/crud/css/form.css').'?v='.config('backpack.base.cachebusting_string') }}">
+  <link rel="stylesheet" href="{{ asset('packages/backpack/crud/css/list.css').'?v='.config('backpack.base.cachebusting_string') }}">
 
   <!-- CRUD LIST CONTENT - crud_list_styles stack -->
   @stack('crud_list_styles')
 @endsection
 
 @section('after_scripts')
-	@include('crud::inc.datatables_logic')
-
-  <script src="{{ asset('packages/backpack/crud/js/crud.js') }}"></script>
-  <script src="{{ asset('packages/backpack/crud/js/form.js') }}"></script>
-  <script src="{{ asset('packages/backpack/crud/js/list.js') }}"></script>
+  @include('crud::inc.datatables_logic')
+  <script src="{{ asset('packages/backpack/crud/js/crud.js').'?v='.config('backpack.base.cachebusting_string') }}"></script>
+  <script src="{{ asset('packages/backpack/crud/js/form.js').'?v='.config('backpack.base.cachebusting_string') }}"></script>
+  <script src="{{ asset('packages/backpack/crud/js/list.js').'?v='.config('backpack.base.cachebusting_string') }}"></script>
 
   <!-- CRUD LIST CONTENT - crud_list_scripts stack -->
   @stack('crud_list_scripts')
