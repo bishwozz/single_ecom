@@ -34,6 +34,14 @@ class HomeController extends Controller
         return view('frontend.index', $this->data);
     }
 
+    public function contactUs(){
+        $this->data = [
+            
+        ];
+       return view('frontend.contact', $this->data);
+    }
+
+
     public function getData($slug)
     {
         $header_footer_data = $this->getApplicationSettingsData();
@@ -59,12 +67,6 @@ class HomeController extends Controller
        return view('frontend.about', $this->data);
     }
 
-    public function contactUs(){
-        $this->data = [
-            
-        ];
-       return view('frontend.contact', $this->data); 
-    }
 
     public function team(){
         $this->data = [

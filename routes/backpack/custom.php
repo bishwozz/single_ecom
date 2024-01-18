@@ -40,12 +40,17 @@ Route::group([
     'namespace'  => 'App\Http\Controllers\Frontend',
 ], function () { 
     Route::get('/', 'HomeController@index');
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/contact-us', 'HomeController@contactUs')->name('contact');
+
+    Route::get('/login', 'RegisterLoginController@login')->name('login');
+    Route::get('/registration', 'RegisterLoginController@registration')->name('registration');
+
+
 
     Route::get('/services', 'ServicesController@index');
     Route::get('/about-us', 'HomeController@about');
     Route::get('/blog', 'BlogController@index');
-    Route::get('/contact-us', 'HomeController@contactUs');
     Route::get('/team', 'HomeController@team');
     Route::get('/choose-us', 'HomeController@chooseUs');
     Route::get('/history', 'HomeController@history');
@@ -56,33 +61,4 @@ Route::group([
     Route::Post('/contact-form', 'HomeController@contactFormSend')->name('contact-form');
 
 
-
-
-    // Route::get('/courses', 'CourseController@index');
-    // Route::get('/courses/{id}', 'CourseController@getCourseDetail');
-    // Route::get('/about_us', 'AboutUsController@index');
-    // Route::get('/about_us/introduction', 'AboutUsController@introduction');
-    // Route::get('/about_us/our_team', 'AboutUsController@ourTeam');
-    // Route::get('/about_us/department_type', 'AboutUsController@departmentType');
-    // Route::get('/about_us/class', 'AboutUsController@class');
-    // Route::get('/about_us/fee_type', 'AboutUsController@feeType');
-    // Route::get('/about_us/scholarships', 'AboutUsController@scholarship');
-    // Route::get('/about_u  s/agents', 'AboutUsController@agents');
-    // Route::get('/agent-detail/{id}', 'AboutUsController@agentDetail');
-    // Route::get('/gallery', 'GalleryController@index');
-    // Route::get('/news_notices', 'NewsController@index');
-    // Route::get('/news_notices/events', 'NewsController@events');
-    // Route::get('/news_notices/blogs', 'NewsController@blog');
-
-    // Route::get('/pages/{slug}', 'HomeController@getData');
-    // Route::get('/event-detail/{id}', 'NewsController@eventDetail');
-    // Route::get('/team-detail/{id}', 'AboutUsController@teamDetail');
-    // Route::get('/blog-detail/{id}', 'NewsController@blogDetail');
-    // Route::get('/news-detail/{id}', 'NewsController@newsDetail');
-    // Route::get('/events/{category_id}', 'NewsController@filteredEvents');
-    // Route::get('/blogs/{category_id}', 'NewsController@filteredBlogs');
-    // Route::get('/news/{category_id}', 'NewsController@filteredNews');
-
-    // Route::get('/contact_us', 'ContactUsController@index');
-    // Route::post('/contact_us', 'ContactUsController@store')->name('contact_us_form');
 });

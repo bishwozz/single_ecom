@@ -5,7 +5,7 @@
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
+	<link rel="shortcut icon" href="frontend/img/fav.png">
 	<!-- Author Meta -->
 	<meta name="author" content="CodePixar">
 	<!-- Meta Description -->
@@ -30,7 +30,7 @@
 
     
     <!-- Custom Style CSS -->
-    {{-- <link rel="stylesheet" href="frontend/css/style.css"> --}}
+    <link rel="stylesheet" href="frontend/css/custom_style.css">
     @yield('css')
 
 
